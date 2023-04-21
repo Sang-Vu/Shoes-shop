@@ -1,0 +1,11 @@
+package com.sangoc.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+public interface GenericDAO<T> {
+	Connection getConnection();
+	<T> List<T> query(T, String sql, Object...parameters);
+}
+
+	

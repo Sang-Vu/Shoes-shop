@@ -1,0 +1,21 @@
+package com.sangoc.dao.impl;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sangoc.dao.IProductDAO;
+import com.sangoc.mapper.ProductMapper;
+import com.sangoc.model.ProductModel;
+
+public class ProductDAO extends AbtractDAO implements IProductDAO {
+	@Override
+	public List<ProductModel> findByCategoryId(Long categoryId, int status){
+		String sql = "SELECT * FROM product WHERE categoryId = ? AND status = ?";
+		return query(new ProductMapper(), sql, categoryId,status);
+	}
+}

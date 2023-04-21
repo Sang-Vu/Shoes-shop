@@ -1,0 +1,13 @@
+package com.sangoc.service.impl;
+
+import java.util.List;
+
+import com.sangoc.model.CategoryModel;
+import com.sangoc.service.ICategoryService;
+
+public class CategoryService implements ICategoryService {
+	@Override
+	public List<CategoryModel> findAll() {
+		return null;
+	}
+}

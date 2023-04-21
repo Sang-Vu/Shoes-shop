@@ -1,0 +1,5 @@
+package com.sangoc.service.impl;
+
+public class CategoryService {
+
+}

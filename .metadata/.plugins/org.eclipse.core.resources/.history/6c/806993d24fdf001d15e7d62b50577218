@@ -1,0 +1,25 @@
+package com.sangoc.ultils;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+public class HttpUltil {
+	private String value;
+
+	public HttpUltil() {
+
+	}
+
+	public static HttpUltil of(BufferedReader reader) {
+		StringBuilder sb = new StringBuilder();
+		String line;
+		try {
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		return new HttpUltil();
+	}
+}

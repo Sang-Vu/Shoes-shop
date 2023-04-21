@@ -1,0 +1,54 @@
+package com.sangoc.dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.sangoc.dao.IProductDAO;
+import com.sangoc.mapper.ProductMapper;
+import com.sangoc.model.ProductModel;
+
+public class ProductDAO extends AbtractDAO<ProductModel> implements IProductDAO {
+	@Override
+	public List<ProductModel> findByCategoryId(Long categoryId, int status) {
+		String sql = "SELECT * FROM product WHERE categoryId = ? AND status = ?";
+		return query(new ProductMapper(), sql, categoryId, status);
+	}
+
+	@Override
+	public ProductModel save(ProductModel product) {
+		String sql = "INSERT INTO product (name, categoryId, price, status) VALUES(?, ?, ?, ?)";
+		Connection conn = null;
+		PreparedStatement statement = null;
+		Integer result = null;
+		try {
+			conn = getConnection();
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, (String) product.getName());
+			statement.setLong(2, (Long) product.getCategoryId());
+			statement.setInt(3, (int) product.getPrice());
+			statement.setInt(4, product.getStatus());
+			result = statement.executeUpdate();
+			
+		} catch (SQLException e) {
+			return null;
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				if (result != null) {
+					result.close();
+				}
+			} catch (SQLException e) {
+				return null;
+			}
+		}
+		return null;
+	}
+}

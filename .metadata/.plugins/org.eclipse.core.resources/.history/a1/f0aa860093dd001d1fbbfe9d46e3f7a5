@@ -1,0 +1,19 @@
+package com.sangoc.dao.impl;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.sangoc.dao.ICategoryDAO;
+import com.sangoc.model.CategoryModel;
+
+public class CategoryDAO implements ICategoryDAO {
+	public Connection getConnection() {
+		Class.forName("jdbc:mysql://localhost:3306/pro_2023_04_16_02_07");
+		return null;
+	}
+	
+	@Override
+	public List<CategoryModel> findAll() {
+		return null;
+	}
+}

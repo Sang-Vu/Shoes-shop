@@ -1,0 +1,26 @@
+package com.sangoc.model;
+
+public class ProductModel extends AbstractModel {	
+	private int price;
+	private int status;
+	private long categoryId;
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public long getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(long categoryId) {
+		this.categoryId = categoryId;
+	}	
+}

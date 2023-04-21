@@ -1,0 +1,12 @@
+package com.sangoc.mapper;
+
+import java.sql.ResultSet;
+
+import com.sangoc.model.CategoryModel;
+
+public class CategoryMapper implements RowMapper<CategoryModel> {
+	@Override
+	public CategoryModel mapRow(ResultSet rs) {
+		return null;
+	}
+}

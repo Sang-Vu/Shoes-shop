@@ -1,0 +1,5 @@
+package com.sangoc.dao.impl;
+
+public class ProductDAO {
+
+}

@@ -1,0 +1,5 @@
+package com.sangoc.model;
+
+public class UserModel {
+
+}

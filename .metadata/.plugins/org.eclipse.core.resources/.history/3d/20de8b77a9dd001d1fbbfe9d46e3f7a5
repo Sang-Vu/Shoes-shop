@@ -1,0 +1,13 @@
+package com.sangoc.dao.impl;
+
+import java.util.List;
+
+import com.sangoc.dao.IProductDAO;
+import com.sangoc.model.ProductModel;
+
+public class ProductDAO implements IProductDAO {
+	@Override
+	public List<ProductModel> findAll() {
+		return null;
+	}
+}

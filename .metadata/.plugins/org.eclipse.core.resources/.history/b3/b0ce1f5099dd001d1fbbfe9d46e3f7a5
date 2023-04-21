@@ -1,0 +1,4 @@
+package com.sangoc.model;
+
+public class CategoryModel extends AbstractModel {
+}

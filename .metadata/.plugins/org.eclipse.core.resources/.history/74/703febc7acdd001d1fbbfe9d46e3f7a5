@@ -1,0 +1,12 @@
+package com.sangoc.service.impl;
+
+import java.util.List;
+
+import com.sangoc.model.ProductModel;
+import com.sangoc.service.IProductService;
+
+public class ProductService implements IProductService {
+	public List<ProductModel> findAll() {
+
+	}
+}

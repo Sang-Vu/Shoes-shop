@@ -1,0 +1,24 @@
+package com.sangoc.mapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.sangoc.model.CategoryModel;
+import com.sangoc.model.ProductModel;
+
+public class ProductMapper {
+	@Override
+	public ProductModel mapRow(ResultSet resultset) {
+		try {
+			ProductModel product = new ProductModel();
+			product.setId(resultset.getLong("id"));
+			product.setName(resultset.getString("name"));
+			product.setPrice(resultset.getInt("price"));
+			product.setPrice(resultset.getInt("categoryId"));
+			return product;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+}

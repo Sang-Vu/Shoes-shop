@@ -1,0 +1,11 @@
+package com.sangoc.mapper;
+
+import java.sql.ResultSet;
+
+import com.sangoc.model.ProductModel;
+
+public class ProductMapper {
+	public ProductModel mapRow(ResultSet resultset) {
+		
+	}
+}

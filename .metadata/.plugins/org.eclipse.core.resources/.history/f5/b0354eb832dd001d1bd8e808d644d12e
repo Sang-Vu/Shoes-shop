@@ -1,0 +1,10 @@
+package com.sangoc.dao;
+
+import java.util.List;
+
+import com.sangoc.model.CategoryModel;
+
+public interface ICategoryDAO {
+	List<CategoryModel> getAll();
+	List<CategoryModel> getById(long id);
+}

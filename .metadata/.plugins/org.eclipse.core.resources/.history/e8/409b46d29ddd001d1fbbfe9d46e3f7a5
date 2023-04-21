@@ -1,0 +1,21 @@
+package com.sangoc.service.impl;
+
+import java.util.List;
+
+import com.sangoc.dao.ICategoryDAO;
+import com.sangoc.dao.impl.CategoryDAO;
+import com.sangoc.model.CategoryModel;
+import com.sangoc.service.ICategoryService;
+
+public class CategoryService implements ICategoryService {
+	private ICategoryDAO categoryDA;
+	
+	public CategoryService() {
+		categoryDA = new CategoryDAO();
+	}
+	
+	@Override
+	public List<CategoryModel> findAll() {
+		return categoryDA.findAll();
+	}
+}
