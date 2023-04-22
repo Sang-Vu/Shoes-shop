@@ -36,7 +36,8 @@ public class ProductAPI extends HttpServlet {
 		objectRespone.setStatus("Failed");
 		objectRespone.setMessage("Not found product with categoryId = " + product.getCategoryId());
 		objectRespone.setData("");
-		if (!foundProduct.isEmpty()) {
+		
+		if (product != null) {
 			objectRespone.setStatus("OK");
 			objectRespone.setMessage("Query proudct successfully");
 			objectRespone.setData(foundProduct);

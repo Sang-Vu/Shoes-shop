@@ -1,7 +1,6 @@
 package com.sangoc.controller.admin.api;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sangoc.model.ProductModel;
-import com.sangoc.model.ResponseObject;
 import com.sangoc.service.IProductService;
 import com.sangoc.ultils.HttpUltil;
 
@@ -20,28 +18,17 @@ import com.sangoc.ultils.HttpUltil;
 public class ProductAPI extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
 	private IProductService productService;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		ResponseObject objectRespone = new ResponseObject();
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		ProductModel product = HttpUltil.of(req.getReader()).toModel(ProductModel.class);
-		List<ProductModel> foundProduct = productService.findByCategoryId(product.getCategoryId(), 1);
-		
-		objectRespone.setStatus("Failed");
-		objectRespone.setMessage("Not found product with categoryId = " + product.getCategoryId());
-		objectRespone.setData("");
-		if (!foundProduct.isEmpty()) {
-			objectRespone.setStatus("OK");
-			objectRespone.setMessage("Query proudct successfully");
-			objectRespone.setData(foundProduct);
-		}
-		mapper.writeValue(resp.getOutputStream(), objectRespone);
+		mapper.writeValue(resp.getOutputStream(), productService.findByCategoryId(product.getCategoryId(), 1));
 	}
 
 	@Override

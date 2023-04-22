@@ -20,26 +20,23 @@ import com.sangoc.ultils.HttpUltil;
 public class ProductAPI extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
 	private IProductService productService;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		ResponseObject objectRespone = new ResponseObject();
+		ResponseObject objectRespone;
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		ProductModel product = HttpUltil.of(req.getReader()).toModel(ProductModel.class);
 		List<ProductModel> foundProduct = productService.findByCategoryId(product.getCategoryId(), 1);
-		
-		objectRespone.setStatus("Failed");
-		objectRespone.setMessage("Not found product with categoryId = " + product.getCategoryId());
-		objectRespone.setData("");
-		if (!foundProduct.isEmpty()) {
-			objectRespone.setStatus("OK");
-			objectRespone.setMessage("Query proudct successfully");
-			objectRespone.setData(foundProduct);
+		if(product != null) {
+			objectRespone = new ResponseObject("OK", "Query proudct successfully", foundProduct);
+		}
+		else {
+			objectRespone = new ResponseObject("OK", "Query proudct successfully", "");
 		}
 		mapper.writeValue(resp.getOutputStream(), objectRespone);
 	}

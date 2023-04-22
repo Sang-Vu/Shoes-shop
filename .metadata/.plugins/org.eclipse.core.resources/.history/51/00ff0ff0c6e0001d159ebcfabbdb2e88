@@ -27,21 +27,24 @@ public class ProductAPI extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		ResponseObject objectRespone = new ResponseObject();
+		ObjectMapper mapper_2 = new ObjectMapper();
+		//ResponseObject objectRespone = null;
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		ProductModel product = HttpUltil.of(req.getReader()).toModel(ProductModel.class);
 		List<ProductModel> foundProduct = productService.findByCategoryId(product.getCategoryId(), 1);
-		
-		objectRespone.setStatus("Failed");
-		objectRespone.setMessage("Not found product with categoryId = " + product.getCategoryId());
-		objectRespone.setData("");
-		if (!foundProduct.isEmpty()) {
-			objectRespone.setStatus("OK");
-			objectRespone.setMessage("Query proudct successfully");
-			objectRespone.setData(foundProduct);
+		if (product != null) {
+			//objectRespone.setStatus("OK");
+			//objectRespone.setMessage("Query proudct successfully");
+			//objectRespone.setData(foundProduct);
+			mapper.writeValue(resp.getOutputStream(), new ResponseObject("OK","Query proudct successfully",foundProduct));
+		} else {
+			//objectRespone.setStatus("Failed");
+			//objectRespone.setMessage("Not found product with categoryId = " + product.getCategoryId());
+			//objectRespone.setData("");
+			mapper_2.writeValue(resp.getOutputStream(), new ResponseObject("Failed","Not found product with categoryId = " + product.getCategoryId(),""));
 		}
-		mapper.writeValue(resp.getOutputStream(), objectRespone);
+		
 	}
 
 	@Override
