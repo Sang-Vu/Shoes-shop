@@ -1,14 +1,15 @@
 package com.sangoc.model;
 
 public class ProductModel extends AbstractModel {	
-	private int price;
+	private Long price;
 	private int status;
 	private Long categoryId;
+	private long[] ids;
 	
-	public int getPrice() {
+	public Long getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 	public int getStatus() {
@@ -22,5 +23,11 @@ public class ProductModel extends AbstractModel {
 	}
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
+	}
+	public long[] getIds() {
+		return ids;
+	}
+	public void setIds(long[] ids) {
+		this.ids = ids;
 	}	
 }

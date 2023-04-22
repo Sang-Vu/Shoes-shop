@@ -18,4 +18,27 @@ public class ProductDAO extends AbtractDAO<ProductModel> implements IProductDAO 
 		String sql = "INSERT INTO product (name, categoryId, price, status) VALUES(?, ?, ?, ?)";
 		return insert(sql, product.getName(), product.getCategoryId(), product.getPrice(), product.getStatus());
 	}
+
+	@Override
+	public ProductModel findOne(Long id) {
+		String sql = "SELECT * FROM product WHERE id = ?";
+		List<ProductModel> product = query(new ProductMapper(), sql, id);
+		return product.isEmpty() ? null : product.get(0);
+	}
+
+	@Override
+	public void update(ProductModel product) {
+		String sql = "UPDATE product SET name = ?, categoryId = ?, price = ?, status = ?, createdDate = ?, createdBy = ?, modifiedDate = ?, modifiedBy = ? WHERE id = ?";
+		update(sql, product.getName(), product.getCategoryId(), product.getPrice(), product.getStatus(),
+				product.getCreatedDate(), product.getCreatedBy(), product.getModifiedDate(), product.getModifiedBy(),
+				product.getId());
+
+	}
+
+	@Override
+	public void delete(long id) {
+		String sql = "DELETE FROM product WHERE id = ?";
+		update(sql, id);
+		
+	}
 }

@@ -19,7 +19,25 @@ public class ProductService implements IProductService {
 	
 	@Override
 	public ProductModel save(ProductModel product) {
-		productDA.save(product);
-		return null;
+		Long id = productDA.save(product);
+		return productDA.findOne(id);
 	}
+
+	@Override
+	public ProductModel update(ProductModel product) {
+		ProductModel oldProduct = productDA.findOne(product.getId());
+		product.setCreatedBy(oldProduct.getCreatedBy());
+		product.setCreatedDate(oldProduct.getCreatedDate());
+		productDA.update(product);
+		return productDA.findOne(product.getId());
+	}
+
+	@Override
+	public void delete(long[] ids) {
+		for(long id : ids) {
+			productDA.delete(id);
+		}
+	}
+	
+	
 }

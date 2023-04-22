@@ -1,7 +1,6 @@
-INDEX VERSION 1.4+D:\sang\java\Eclipse workspace\workspace2\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2190096079.index
-3116048621.index
-2394817495.index
+INDEX VERSION 1.4+D:\sang\java\Eclipse workspace\Shoes-shop\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2460437037.index
 1154915297.index
-605487319.index
-3781029833.index
+3800919430.index
+2576754217.index
+1778626303.index

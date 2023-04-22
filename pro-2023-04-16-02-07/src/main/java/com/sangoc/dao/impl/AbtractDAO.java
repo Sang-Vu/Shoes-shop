@@ -5,10 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,10 +63,10 @@ public class AbtractDAO<T> implements GenericDAO<T> {
 	@Override
 	public void update(String sql, Object... parameters) {
 		PreparedStatement statement = null;
-
 		Connection conn = null;
 		try {
 			conn = getConnection();
+			conn.setAutoCommit(false);
 			statement = conn.prepareStatement(sql);
 			setParameter(statement, parameters);
 			statement.executeUpdate();
@@ -156,6 +154,8 @@ public class AbtractDAO<T> implements GenericDAO<T> {
 					statement.setBoolean(index, (Boolean) parameters[i]);
 				} else if (parameters[i] instanceof Timestamp) {
 					statement.setTimestamp(index, (Timestamp) parameters[i]);
+				}else if(parameters[i] == null) {
+					statement.setNull(index, Types.NULL);
 				}
 			}
 		} catch (SQLException e) {

@@ -1,7 +1,0 @@
-package com.sangoc.dao.impl;
-
-import com.sangoc.dao.IProductDAO;
-
-public class ProductDAO implements IProductDAO {
-
-}
