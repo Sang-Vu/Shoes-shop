@@ -13,9 +13,17 @@ public class RoleMapper implements RowMapper<RoleModel> {
 			role.setId(resultset.getLong("id"));
 			role.setName(resultset.getString("name"));
 			role.setCode(resultset.getString("name"));
+			role.setCreatedDate(resultset.getTimestamp("createdDate"));
+			role.setCreatedBy(resultset.getString("createdBy"));
+			if (resultset.getTimestamp("modifiedDate") != null) {
+				role.setModifiedDate(resultset.getTimestamp("modifiedDate"));
+			}
+			if (resultset.getString("modifiedBy") != null) {
+				role.setModifiedBy(resultset.getString("modifiedBy"));
+			}
+
 			return role;
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			return null;
 		}
 	}

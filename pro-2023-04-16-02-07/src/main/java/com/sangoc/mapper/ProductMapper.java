@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import com.sangoc.model.ProductModel;
 
-public class ProductMapper implements RowMapper<ProductModel> {
+public class ProductMapper  implements RowMapper<ProductModel> {
 	@Override
 	public ProductModel mapRow(ResultSet resultset) {
 		try {
@@ -15,6 +15,15 @@ public class ProductMapper implements RowMapper<ProductModel> {
 			product.setPrice(resultset.getLong("price"));
 			product.setCategoryId(resultset.getLong("categoryId"));
 			product.setStatus(resultset.getInt("status"));
+			product.setCreatedDate(resultset.getTimestamp("createdDate"));
+			product.setCreatedBy(resultset.getString("createdBy"));
+			if (resultset.getTimestamp("modifiedDate") != null) {
+				product.setModifiedDate(resultset.getTimestamp("modifiedDate"));
+			}
+			if (resultset.getString("modifiedBy") != null) {
+				product.setModifiedBy(resultset.getString("modifiedBy"));
+			}
+			
 			return product;
 		}
 		catch(SQLException e) {

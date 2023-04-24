@@ -1,0 +1,24 @@
+package com.sangoc.mapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.sangoc.model.AbstractModel;
+import com.sangoc.model.ProductModel;
+
+public class AbstractMapper implements RowMapper<AbstractModel> {
+	@Override
+	public AbstractModel mapRow(ResultSet resultset) {
+		try {
+			AbstractModel abstractModel = new AbstractModel();
+			abstractModel.setCreatedDate(resultset.getTimestamp("createdDate"));
+			abstractModel.setCreatedBy(resultset.getString("createdBy"));
+			abstractModel.setModifiedBy(resultset.getString("modifiedBy"));;
+			abstractModel.setModifiedDate(resultset.getTimestamp("modifiedDate"));;
+			return abstractModel;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+}

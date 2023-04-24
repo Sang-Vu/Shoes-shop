@@ -4,7 +4,7 @@ public class UserModel extends AbstractModel {
 	private String email;
 	private String password;
 	private String address;
-	private int phone;
+	private Long phone;
 	private int status;
 	
 	public String getEmail() {
@@ -25,10 +25,10 @@ public class UserModel extends AbstractModel {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getPhone() {
+	public Long getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(Long phone) {
 		this.phone = phone;
 	}
 	public int getStatus() {

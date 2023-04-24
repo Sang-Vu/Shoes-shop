@@ -4,7 +4,7 @@ public class ProductModel extends AbstractModel {
 	private Long price;
 	private int status;
 	private Long categoryId;
-	private long[] ids;
+	
 	
 	public Long getPrice() {
 		return price;
@@ -23,11 +23,5 @@ public class ProductModel extends AbstractModel {
 	}
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
-	}
-	public long[] getIds() {
-		return ids;
-	}
-	public void setIds(long[] ids) {
-		this.ids = ids;
 	}	
 }

@@ -15,8 +15,11 @@ public class ProductDAO extends AbtractDAO<ProductModel> implements IProductDAO 
 
 	@Override
 	public Long save(ProductModel product) {
-		String sql = "INSERT INTO product (name, categoryId, price, status) VALUES(?, ?, ?, ?)";
-		return insert(sql, product.getName(), product.getCategoryId(), product.getPrice(), product.getStatus());
+		StringBuilder sql = new StringBuilder(
+				"INSERT INTO product (name, categoryId, price, status,createdDate, createdBy) ");
+		sql.append("VALUES(?, ?, ?, ?, ?, ?)");
+		return insert(sql.toString(), product.getName(), product.getCategoryId(), product.getPrice(),
+				product.getStatus(), product.getCreatedDate(), product.getCreatedBy());
 	}
 
 	@Override
@@ -28,17 +31,19 @@ public class ProductDAO extends AbtractDAO<ProductModel> implements IProductDAO 
 
 	@Override
 	public void update(ProductModel product) {
-		String sql = "UPDATE product SET name = ?, categoryId = ?, price = ?, status = ?, createdDate = ?, createdBy = ?, modifiedDate = ?, modifiedBy = ? WHERE id = ?";
-		update(sql, product.getName(), product.getCategoryId(), product.getPrice(), product.getStatus(),
+		StringBuilder sql = new StringBuilder("UPDATE product SET name = ?, categoryId = ?, ");
+		sql.append("price = ?, status = ?, ");
+		sql.append("createdDate = ?, createdBy = ?, ");
+		sql.append("modifiedDate = ?, modifiedBy = ? WHERE id = ?");
+		update(sql.toString(), product.getName(), product.getCategoryId(), product.getPrice(), product.getStatus(),
 				product.getCreatedDate(), product.getCreatedBy(), product.getModifiedDate(), product.getModifiedBy(),
 				product.getId());
-
 	}
 
 	@Override
 	public void delete(long id) {
 		String sql = "DELETE FROM product WHERE id = ?";
 		update(sql, id);
-		
+
 	}
 }

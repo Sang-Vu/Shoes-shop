@@ -1,7 +1,0 @@
-package com.sangoc.controller.web;
-
-import javax.servlet.http.HttpServlet;
-
-public class HomeController extends HttpServlet {
-	
-}

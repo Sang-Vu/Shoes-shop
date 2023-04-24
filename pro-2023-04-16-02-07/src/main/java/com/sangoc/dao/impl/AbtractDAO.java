@@ -154,8 +154,6 @@ public class AbtractDAO<T> implements GenericDAO<T> {
 					statement.setBoolean(index, (Boolean) parameters[i]);
 				} else if (parameters[i] instanceof Timestamp) {
 					statement.setTimestamp(index, (Timestamp) parameters[i]);
-				}else if(parameters[i] == null) {
-					statement.setNull(index, Types.NULL);
 				}
 			}
 		} catch (SQLException e) {
